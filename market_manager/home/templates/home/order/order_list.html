@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Pedidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Pedidos</h1>
+    <a href="{% url 'order_create' %}" class="btn btn-primary mb-4">Criar Pedido</a>
+    <ul class="list-group">
+        {% for pedido in orders %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="{% url 'order_detail' pedido.id %}">Pedido #{{ pedido.id }}</a>
+            <form action="{% url 'order_delete' pedido.id %}" method="post" class="d-inline" onsubmit="return confirmDelete('{{ pedido.id }}');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+function confirmDelete(orderId) {
+    return confirm(`Tem certeza de que deseja remover o pedido #${orderId}?`);
+}
+</script>
+{% endblock %}

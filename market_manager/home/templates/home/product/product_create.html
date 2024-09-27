@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Cadastro de Produto{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Cadastro de Produto</h1>
+    <form method="post" class="mt-4">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome do Produto</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Preço do Produto</label>
+        <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="stock" class="form-label">Estoque</label>
+        <input type="number" class="form-control" id="stock" name="stock" step="0.01" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}

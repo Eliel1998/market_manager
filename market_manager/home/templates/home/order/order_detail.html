@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Detalhes do Pedido{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center">Detalhes do Pedido</h1>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Pedido ID: {{ order.id }}</h5>
+      <p class="card-text"><strong>Data:</strong> {{ order.date }}</p>
+      <p class="card-text"><strong>Cliente:</strong> {{ order.client.name }}</p>
+    </div>
+    <div>
+      <h5 class="card-title m-3">Produtos</h5>
+      <ul class="list-group">
+        {% for pedido_produto in pedido_produto %}
+        <li class="list-group-item">
+          <strong>{{ pedido_produto.quantity }} x</strong> {{ pedido_produto.product.name }} - {{ pedido_produto.product.price }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

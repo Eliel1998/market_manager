@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Detalhes do Produto{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center">{{ produto.name }}</h1>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Detalhes</h5>
+      <p class="card-text"><strong>Nome:</strong> {{ produto.name }}</p>
+      <p class="card-text"><strong>Preço:</strong> {{ produto.price }}</p>
+      <p class="card-text"><strong>Estoque:</strong> {{ produto.stock }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

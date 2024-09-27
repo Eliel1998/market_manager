@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Cadastro de Pedido{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Cadastro de Pedido</h1>
+    <form method="post" class="mt-4">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="data" class="form-label">Data do Pedido</label>
+        <input type="date" class="form-control" id="data" name="data" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="cliente" class="form-label">Cliente</label>
+        <select class="form-control" id="cliente" name="cliente" required>
+          <option value="">Selecione um Cliente</option>
+          {% for cliente in clientes %}
+            <option value="{{ cliente.id }}">{{ cliente.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="produto" class="form-label">Produtos</label>
+        <select class="form-control" id="produto" name="produto" required>
+          <option value="">Selecione um Produto</option>
+          {% for produto in produtos %}
+            <option value="{{ produto.id }}">{{ produto.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="quantidade" class="form-label">Quantidade</label>
+        <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}
